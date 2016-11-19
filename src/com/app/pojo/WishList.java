@@ -2,7 +2,12 @@ package com.app.pojo;
 
 import java.util.Collection;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class WishList {
+	@Id
 	private int id;
 	private String Name;
 	private Collection<Item> items;

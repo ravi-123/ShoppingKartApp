@@ -21,12 +21,17 @@
 		<property name="packagesToScan" value="com.app.pojo"/>
 		<property name="hibernateProperties">
 		  <value> 
-			hibernate.dialect=org.hibernate.dialect.Oracle10gDialect
+			hibernate.dialect=${jdbc.db_dialect}
 			hibernate.format_sql=true
 			hibernate.show_sql=true
-			hibernate.hbm2ddl.auto=update
+			hibernate.hbm2ddl.auto=create
 		  </value>
 		</property>
 	</bean>
-
+	
+	<bean id="transactionManager" 
+	class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+	<tx:annotation-driven/>
 </beans>

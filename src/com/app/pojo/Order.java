@@ -3,7 +3,12 @@ package com.app.pojo;
 import java.util.Collection;
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Order {
+	@Id
 	private int id;
 	private Date orderDate;
 	private Date receivedDate;

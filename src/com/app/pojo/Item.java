@@ -3,8 +3,12 @@ package com.app.pojo;
 import java.util.Collection;
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+@Entity
 public class Item {
+	@Id
 	private String id;
 	private String name;
 	private String model;

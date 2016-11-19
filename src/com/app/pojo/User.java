@@ -2,10 +2,15 @@ package com.app.pojo;
 
 import java.util.Collection;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 import com.app.enums.Gender;
 import com.app.enums.Role;
 
+@Entity
 public class User {
+	@Id
 	private String id;
 	private String passowrd;
 	public String getPassowrd() {

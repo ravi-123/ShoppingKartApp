@@ -1,9 +1,15 @@
 package com.app.pojo;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 import com.app.enums.AddressPreferenceType;
 import com.app.enums.AddressType;
 
+@Entity
 public class Address {
+	@Id
+	private int id;
 	private String flat;
 	private String building;
 	private String apartment;

@@ -1,6 +1,11 @@
 package com.app.pojo;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Review {
+	@Id
 	private int id;
 	private float rating;
 	private int itemId;

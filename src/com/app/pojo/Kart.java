@@ -2,7 +2,12 @@ package com.app.pojo;
 
 import java.util.Collection;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Kart {
+	@Id
 	private String id;
 	private Collection<Item> items;
 	private int totalQty;
