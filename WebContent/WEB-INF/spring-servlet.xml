@@ -25,5 +25,5 @@
 		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
 		<property name="basename" value="classpath:messages123" />
 	</bean>
-	<import resource="resources/hibernate-persistence.xml"/>
+	<import resource="classpath:hibernate-persistence.xml"/>
 </beans>
