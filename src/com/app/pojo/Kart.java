@@ -1,9 +1,6 @@
 package com.app.pojo;
 
 import java.util.Collection;
-import java.util.Date;
-
-import com.app.enums.Role;
 
 public class Kart {
 	private String id;
