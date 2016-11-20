@@ -3,14 +3,14 @@ package com.app.pojo;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -21,11 +21,12 @@ import javax.validation.constraints.Size;
 public class Item {
 	@Id	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	@Size(min = 3, max = 20)
+	
 	@Column(length=20)
+	@Size(min = 3, max = 20)
 	@NotNull
-	private String name;
-	private String model;
+	private String itemName;
+	private String itemModel;
 	private String itemSize;
 	private String imgUrl;
 	@NotNull
@@ -38,11 +39,14 @@ public class Item {
 	@Embedded
 	private ItemDetails details;
 	
-    @OneToMany
-    @JoinTable(name="SK_Item_Reviews",
-    joinColumns=@JoinColumn(name="Item_Id"),
-    inverseJoinColumns=@JoinColumn(name="Review_Id"))
+    @OneToMany(mappedBy="item",cascade=CascadeType.ALL)
 	private Collection<Review> reviews = new ArrayList<Review>();
+    
+//    @ManyToMany(mappedBy="items",cascade=CascadeType.ALL)
+//    private Collection<Kart> karts = new ArrayList<>();
+//    
+//    @ManyToMany(mappedBy="items",cascade=CascadeType.ALL)
+//    private Collection<Order> orders = new ArrayList<>();
 
 	public int getId() {
 		return id;
@@ -52,27 +56,27 @@ public class Item {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getItemName() {
+		return itemName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
 	}
 
-	public String getModel() {
-		return model;
+	public String getItemModel() {
+		return itemModel;
 	}
 
-	public void setModel(String model) {
-		this.model = model;
+	public void setItemModel(String itemModel) {
+		this.itemModel = itemModel;
 	}
 
 	public String getItemSize() {
 		return itemSize;
 	}
 
-	public void setSize(String itemSize) {
+	public void setItemSize(String itemSize) {
 		this.itemSize = itemSize;
 	}
 
@@ -90,10 +94,6 @@ public class Item {
 
 	public void setTotalQty(int totalQty) {
 		this.totalQty = totalQty;
-	}
-
-	public void setItemSize(String itemSize) {
-		this.itemSize = itemSize;
 	}
 
 	public float getSP() {
@@ -136,4 +136,20 @@ public class Item {
 		this.reviews = reviews;
 	}
 
+//	public Collection<Kart> getKarts() {
+//		return karts;
+//	}
+//
+//	public void setKarts(Collection<Kart> karts) {
+//		this.karts = karts;
+//	}
+//
+//	public Collection<Order> getOrders() {
+//		return orders;
+//	}
+//
+//	public void setOrders(Collection<Order> orders) {
+//		this.orders = orders;
+//	}
+    
 }

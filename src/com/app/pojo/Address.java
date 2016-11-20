@@ -51,68 +51,12 @@ public class Address {
 		this.id = id;
 	}
 
-	public String getFlat() {
-		return flat;
+	public AddressPreferenceType getAddresPreference() {
+		return addresPreference;
 	}
 
-	public void setFlat(String flat) {
-		this.flat = flat;
-	}
-
-	public String getBuilding() {
-		return building;
-	}
-
-	public void setBuilding(String building) {
-		this.building = building;
-	}
-
-	public String getApartment() {
-		return apartment;
-	}
-
-	public void setApartment(String apartment) {
-		this.apartment = apartment;
-	}
-
-	public String getLocality() {
-		return locality;
-	}
-
-	public void setLocality(String locality) {
-		this.locality = locality;
-	}
-
-	public String getLandmark() {
-		return landmark;
-	}
-
-	public void setLandmark(String landmark) {
-		this.landmark = landmark;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public String getState() {
-		return state;
-	}
-
-	public void setState(String state) {
-		this.state = state;
-	}
-
-	public String getPincode() {
-		return pincode;
-	}
-
-	public void setPincode(String pincode) {
-		this.pincode = pincode;
+	public void setAddresPreference(AddressPreferenceType addresPreference) {
+		this.addresPreference = addresPreference;
 	}
 
 	public AddressType getAddressType() {
@@ -123,12 +67,68 @@ public class Address {
 		this.addressType = addressType;
 	}
 
-	public AddressPreferenceType getPreference() {
-		return addresPreference;
+	public String getApartment() {
+		return apartment;
 	}
 
-	public void setPreference(AddressPreferenceType addresPreference) {
-		this.addresPreference = addresPreference;
+	public void setApartment(String apartment) {
+		this.apartment = apartment;
+	}
+
+	public String getBuilding() {
+		return building;
+	}
+
+	public void setBuilding(String building) {
+		this.building = building;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getFlat() {
+		return flat;
+	}
+
+	public void setFlat(String flat) {
+		this.flat = flat;
+	}
+
+	public String getLandmark() {
+		return landmark;
+	}
+
+	public void setLandmark(String landmark) {
+		this.landmark = landmark;
+	}
+
+	public String getLocality() {
+		return locality;
+	}
+
+	public void setLocality(String locality) {
+		this.locality = locality;
+	}
+
+	public String getPincode() {
+		return pincode;
+	}
+
+	public void setPincode(String pincode) {
+		this.pincode = pincode;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
 	}
 
 	public User getUser() {
@@ -138,5 +138,5 @@ public class Address {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
+
 }

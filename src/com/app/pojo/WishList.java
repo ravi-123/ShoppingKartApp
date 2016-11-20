@@ -3,13 +3,15 @@ package com.app.pojo;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -20,10 +22,14 @@ public class WishList {
 	private int id;
 	private String name;
 	
-	@OneToMany
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="User_Id")
+	private User user;
+	
+	@ManyToMany(cascade=CascadeType.ALL)
 	@JoinTable(name="SK_WishList_Items",
 	joinColumns=@JoinColumn(name="WishList_Id"),
-	inverseJoinColumns=@JoinColumn(name="Item_Id"),
+	inverseJoinColumns=@JoinColumn(name="Item_Id",unique=false),
 	uniqueConstraints={@UniqueConstraint(columnNames={"WishList_Id","Item_Id"})})
 	private Collection<Item> items = new ArrayList<>();
 
@@ -41,6 +47,14 @@ public class WishList {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public Collection<Item> getItems() {

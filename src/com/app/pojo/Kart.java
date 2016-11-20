@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -24,14 +24,13 @@ public class Kart {
 	@JoinColumn(name="User_Id")
 	private User user;
 
-	@ManyToMany
-	@JoinTable(name="SK_Kart_Items", 
-	joinColumns=@JoinColumn(name="Kart_Id"),
-	inverseJoinColumns={
-			@JoinColumn(name="Item_Id",referencedColumnName="id",unique=false),
-			@JoinColumn(name="Qty",referencedColumnName="totalQty",unique=false)
-	},	uniqueConstraints={@UniqueConstraint(columnNames={"Kart_Id","Item_Id"})})
-	private Collection<Item> items = new ArrayList<Item>();
+	@OneToMany(mappedBy="kart")
+//	@JoinTable(name="SK_Kart_Items", 
+//	joinColumns=@JoinColumn(name="Kart_Id"),
+//	inverseJoinColumns={
+//			@JoinColumn(name="Item_Id",referencedColumnName="id",unique=false)
+//	},	uniqueConstraints={@UniqueConstraint(columnNames={"Kart_Id","Item_Id"})})
+	private Collection<KartItem> itemsInKart = new ArrayList<>();
 
 	public int getId() {
 		return id;
@@ -41,14 +40,6 @@ public class Kart {
 		this.id = id;
 	}
 
-	public Collection<Item> getItems() {
-		return items;
-	}
-
-	public void setItems(Collection<Item> items) {
-		this.items = items;
-	}
-
 	public User getUser() {
 		return user;
 	}
@@ -56,6 +47,5 @@ public class Kart {
 	public void setUser(User user) {
 		this.user = user;
 	}
-
 
 }

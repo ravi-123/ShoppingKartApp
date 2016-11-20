@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -49,28 +50,16 @@ public class User {
 	@Enumerated(EnumType.STRING)
 	private Role role;
 
-	@OneToMany
-	@JoinTable(name = "SK_User_Orders", 
-	joinColumns = @JoinColumn(name = "User_Id"), 
-	inverseJoinColumns = @JoinColumn(name = "Order_Id"))
+	@OneToMany(mappedBy="user",cascade=CascadeType.ALL)
 	private Collection<Order> myOrders = new ArrayList<>();
 
-	@OneToMany
-	@JoinTable(name = "SK_User_Addresses", 
-	joinColumns = @JoinColumn(name = "User_Id"), 
-	inverseJoinColumns = @JoinColumn(name = "Address_Id"))
+	@OneToMany(mappedBy="user",cascade=CascadeType.ALL)
 	private Collection<Address> myAddresses = new ArrayList<>();
 
-	@OneToMany
-	@JoinTable(name = "SK_User_Wishlist", 
-	joinColumns = @JoinColumn(name = "User_Id"),
-	inverseJoinColumns = @JoinColumn(name = "WishList_Id"))
+	@OneToMany(mappedBy="user",cascade=CascadeType.ALL)
 	private Collection<WishList> myWishLists = new ArrayList<>();;
 
-	@OneToMany
-	@JoinTable(name = "SK_User_Reviews", 
-	joinColumns = @JoinColumn(name = "User_Id"), 
-	inverseJoinColumns = @JoinColumn(name = "Review_Id"))
+	@OneToMany(mappedBy="user",cascade=CascadeType.ALL)
 	private Collection<Review> myReviews = new ArrayList<>();
 
 	public int getId() {

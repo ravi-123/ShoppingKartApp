@@ -1,5 +1,6 @@
 package com.app.pojo;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,39 +17,50 @@ public class Review {
 	private float rating;
 	private String comments;
 	
-	@ManyToOne
-	@JoinColumn(name="Item_Id")
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="Item_Id",unique=false)
 	private Item item;
-	@ManyToOne
-	@JoinColumn(name="User_Id")
+	
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="User_Id",unique=false)
 	private User user;
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public float getRating() {
 		return rating;
 	}
+
 	public void setRating(float rating) {
 		this.rating = rating;
 	}
+
 	public String getComments() {
 		return comments;
 	}
+
 	public void setComments(String comments) {
 		this.comments = comments;
 	}
+
 	public Item getItem() {
 		return item;
 	}
+
 	public void setItem(Item item) {
 		this.item = item;
 	}
+
 	public User getUser() {
 		return user;
 	}
+
 	public void setUser(User user) {
 		this.user = user;
 	}

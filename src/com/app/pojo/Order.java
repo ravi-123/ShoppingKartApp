@@ -41,14 +41,13 @@ public class Order {
 	@JoinColumn(name="Delivery_Address_Id")
 	private Address deliveryAddress;
 
-	@OneToMany
-	@JoinTable(name="SK_Ordered_Items", 
-	joinColumns=@JoinColumn(name="Order_Id"),
-	inverseJoinColumns={
-			@JoinColumn(name="Item_Id",referencedColumnName="id",unique=false),
-			@JoinColumn(name="Qty",referencedColumnName="totalQty",unique=false)
-	},	uniqueConstraints={@UniqueConstraint(columnNames={"Order_Id","Item_Id"})})
-	private Collection<Item> items = new ArrayList<Item>();
+	@OneToMany(mappedBy="order")
+//	@JoinTable(name="SK_Ordered_Items", 
+//	joinColumns=@JoinColumn(name="Order_Id"),
+//	inverseJoinColumns={
+//			@JoinColumn(name="Item_Id",referencedColumnName="id",unique=false)
+//	},	uniqueConstraints={@UniqueConstraint(columnNames={"Order_Id","Item_Id"})})
+	private Collection<OrderItem> orderedItems = new ArrayList<>();
 
 	public int getId() {
 		return id;
@@ -106,14 +105,6 @@ public class Order {
 		this.user = user;
 	}
 
-	public Collection<Item> getItems() {
-		return items;
-	}
-
-	public void setItems(Collection<Item> items) {
-		this.items = items;
-	}
-
 	public Address getDeliveryAddress() {
 		return deliveryAddress;
 	}
@@ -121,6 +112,13 @@ public class Order {
 	public void setDeliveryAddress(Address deliveryAddress) {
 		this.deliveryAddress = deliveryAddress;
 	}
-	
-	
+
+//	public Collection<Item> getItems() {
+//		return items;
+//	}
+//
+//	public void setItems(Collection<Item> items) {
+//		this.items = items;
+//	}
+
 }
