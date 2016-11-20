@@ -19,6 +19,8 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 import org.hibernate.validator.constraints.Email;
 
 import com.app.enums.Gender;
@@ -170,6 +172,13 @@ public class User {
 
 	public void setMyReviews(Collection<Review> myReviews) {
 		this.myReviews = myReviews;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", passowrd=" + passowrd + ", name=" + name + ", dob=" + dob + ", age=" + age
+				+ ", email=" + email + ", contactNo=" + contactNo + ", alternateContactNo=" + alternateContactNo
+				+ ", sex=" + sex + ", role=" + role + "]";
 	}
 
 }

@@ -24,7 +24,7 @@
 			hibernate.dialect=${jdbc.db_dialect}
 			hibernate.format_sql=true
 			hibernate.show_sql=true
-			hibernate.hbm2ddl.auto=create
+			hibernate.hbm2ddl.auto=update
 		  </value>
 		</property>
 	</bean>
