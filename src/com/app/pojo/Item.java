@@ -10,7 +10,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -41,12 +40,6 @@ public class Item {
 	
     @OneToMany(mappedBy="item",cascade=CascadeType.ALL)
 	private Collection<Review> reviews = new ArrayList<Review>();
-    
-//    @ManyToMany(mappedBy="items",cascade=CascadeType.ALL)
-//    private Collection<Kart> karts = new ArrayList<>();
-//    
-//    @ManyToMany(mappedBy="items",cascade=CascadeType.ALL)
-//    private Collection<Order> orders = new ArrayList<>();
 
 	public int getId() {
 		return id;
@@ -135,21 +128,5 @@ public class Item {
 	public void setReviews(Collection<Review> reviews) {
 		this.reviews = reviews;
 	}
-
-//	public Collection<Kart> getKarts() {
-//		return karts;
-//	}
-//
-//	public void setKarts(Collection<Kart> karts) {
-//		this.karts = karts;
-//	}
-//
-//	public Collection<Order> getOrders() {
-//		return orders;
-//	}
-//
-//	public void setOrders(Collection<Order> orders) {
-//		this.orders = orders;
-//	}
     
 }

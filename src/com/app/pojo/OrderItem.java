@@ -27,4 +27,36 @@ public class OrderItem {
 	@NotNull
 	private int itemQty;
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Order getOrder() {
+		return order;
+	}
+
+	public void setOrder(Order order) {
+		this.order = order;
+	}
+
+	public Item getItem() {
+		return item;
+	}
+
+	public void setItem(Item item) {
+		this.item = item;
+	}
+
+	public int getItemQty() {
+		return itemQty;
+	}
+
+	public void setItemQty(int itemQty) {
+		this.itemQty = itemQty;
+	}
+
 }
