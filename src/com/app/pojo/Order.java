@@ -15,10 +15,11 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name="SK_Order")
+@Table(name="SK_Order",uniqueConstraints={@UniqueConstraint(columnNames={"id","User_Id"})})
 public class Order {
 	@Id	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;

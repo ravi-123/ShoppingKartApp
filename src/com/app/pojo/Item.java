@@ -2,21 +2,27 @@ package com.app.pojo;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="SK_Item")
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public class Item {
 	@Id	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
@@ -26,6 +32,7 @@ public class Item {
 	@NotNull
 	private String itemName;
 	private String itemModel;
+	private String category;
 	private String itemSize;
 	private String imgUrl;
 	@NotNull
@@ -34,13 +41,23 @@ public class Item {
 	private float SP;
 	@NotNull
 	private float MRP;
-	private float overallRating;
-	@Embedded
-	private ItemDetails details;
-	
-    @OneToMany(mappedBy="item",cascade=CascadeType.ALL)
-	private Collection<Review> reviews = new ArrayList<Review>();
+	@NotNull
+	private float PP;
 
+	private float overallRating;
+    
+	private String batchNo;
+	@Temporal(TemporalType.DATE)
+	@Past(message="mfg date shud be past only")
+	@NotNull
+	private Date mfg;
+	@Temporal(TemporalType.DATE)
+	@NotNull
+	private Date expiry;
+	
+	@OneToMany(mappedBy="item",cascade=CascadeType.ALL)
+	private Collection<Review> reviews = new ArrayList<Review>();
+	
 	public int getId() {
 		return id;
 	}
@@ -113,14 +130,6 @@ public class Item {
 		this.overallRating = overallRating;
 	}
 
-	public ItemDetails getDetails() {
-		return details;
-	}
-
-	public void setDetails(ItemDetails details) {
-		this.details = details;
-	}
-
 	public Collection<Review> getReviews() {
 		return reviews;
 	}
@@ -128,5 +137,45 @@ public class Item {
 	public void setReviews(Collection<Review> reviews) {
 		this.reviews = reviews;
 	}
-    
+
+	public float getPP() {
+		return PP;
+	}
+
+	public void setPP(float pP) {
+		PP = pP;
+	}
+
+	public String getBatchNo() {
+		return batchNo;
+	}
+
+	public void setBatchNo(String batchNo) {
+		this.batchNo = batchNo;
+	}
+
+	public Date getMfg() {
+		return mfg;
+	}
+
+	public void setMfg(Date mfg) {
+		this.mfg = mfg;
+	}
+
+	public Date getExpiry() {
+		return expiry;
+	}
+
+	public void setExpiry(Date expiry) {
+		this.expiry = expiry;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+	
 }

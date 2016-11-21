@@ -16,18 +16,17 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
-import org.hibernate.annotations.NotFound;
-import org.hibernate.annotations.NotFoundAction;
 import org.hibernate.validator.constraints.Email;
 
 import com.app.enums.Gender;
 import com.app.enums.Role;
 
 @Entity
-@Table(name = "SK_User")
+@Table(name = "SK_User",uniqueConstraints={@UniqueConstraint(columnNames={"email"}),@UniqueConstraint(columnNames={"contactNo"})})
 public class User {
 	@Id	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;

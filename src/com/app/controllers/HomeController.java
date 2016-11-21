@@ -54,12 +54,7 @@ public class HomeController {
 		u1 = null;
 		u1 = userService.getUser(1);
 		System.out.println("after get from db, user="+u1);
-//		System.out.println("in Home");
-////		return new ModelAndView("index","userName","ravi");
-//		Map<String,Object> m1 = new HashMap<>();
-//		m1.put("userName", "Manish");
-//		m1.put("contact", "7775069659");
-		return new ModelAndView("index","user",u1);
+    	return new ModelAndView("index","user",u1);
 	}
 	// req handling method
 	@RequestMapping("/hello1")
