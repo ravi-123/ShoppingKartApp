@@ -23,7 +23,7 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.Email;
 
 import com.app.enums.Gender;
-import com.app.enums.Role;
+import com.app.pojo.Role;
 
 @Entity
 @Table(name = "SK_User",uniqueConstraints={@UniqueConstraint(columnNames={"email"}),@UniqueConstraint(columnNames={"contactNo"})})
