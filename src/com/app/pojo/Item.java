@@ -1,8 +1,8 @@
 package com.app.pojo;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,8 +10,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -22,7 +20,6 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="SK_Item")
-@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public class Item {
 	@Id	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
@@ -33,6 +30,7 @@ public class Item {
 	private String itemName;
 	private String itemModel;
 	private String category;
+	private String brand;
 	private String itemSize;
 	private String imgUrl;
 	@NotNull
@@ -56,7 +54,10 @@ public class Item {
 	private Date expiry;
 	
 	@OneToMany(mappedBy="item",cascade=CascadeType.ALL)
-	private Collection<Review> reviews = new ArrayList<Review>();
+	private List<Review> reviews = new ArrayList<>();
+	
+	@OneToMany(mappedBy="item")
+	private List<OrderItem> orderedItems = new ArrayList<>();
 	
 	public int getId() {
 		return id;
@@ -130,11 +131,11 @@ public class Item {
 		this.overallRating = overallRating;
 	}
 
-	public Collection<Review> getReviews() {
+	public List<Review> getReviews() {
 		return reviews;
 	}
 
-	public void setReviews(Collection<Review> reviews) {
+	public void setReviews(List<Review> reviews) {
 		this.reviews = reviews;
 	}
 
@@ -176,6 +177,22 @@ public class Item {
 
 	public void setCategory(String category) {
 		this.category = category;
+	}
+
+	public List<OrderItem> getOrderedItems() {
+		return orderedItems;
+	}
+
+	public void setOrderedItems(List<OrderItem> orderedItems) {
+		this.orderedItems = orderedItems;
+	}
+
+	public String getBrand() {
+		return brand;
+	}
+
+	public void setBrand(String brand) {
+		this.brand = brand;
 	}
 	
 }

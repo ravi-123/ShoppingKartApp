@@ -1,8 +1,8 @@
 package com.app.pojo;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -50,16 +50,16 @@ public class User {
 	private Role role;
 
 	@OneToMany(mappedBy="user",cascade=CascadeType.ALL)
-	private Collection<Order> myOrders = new ArrayList<>();
+	private List<Order> myOrders = new ArrayList<>();
 
 	@OneToMany(mappedBy="user",cascade=CascadeType.ALL)
-	private Collection<Address> myAddresses = new ArrayList<>();
+	private List<Address> myAddresses = new ArrayList<>();
 
 	@OneToMany(mappedBy="user",cascade=CascadeType.ALL)
-	private Collection<WishList> myWishLists = new ArrayList<>();;
+	private List<WishList> myWishLists = new ArrayList<>();;
 
 	@OneToMany(mappedBy="user",cascade=CascadeType.ALL)
-	private Collection<Review> myReviews = new ArrayList<>();
+	private List<Review> myReviews = new ArrayList<>();
 
 	public int getId() {
 		return id;
@@ -141,35 +141,36 @@ public class User {
 		this.role = role;
 	}
 
-	public Collection<Order> getMyOrders() {
+	
+	public List<Order> getMyOrders() {
 		return myOrders;
 	}
 
-	public void setMyOrders(Collection<Order> myOrders) {
+	public void setMyOrders(List<Order> myOrders) {
 		this.myOrders = myOrders;
 	}
 
-	public Collection<Address> getMyAddresses() {
+	public List<Address> getMyAddresses() {
 		return myAddresses;
 	}
 
-	public void setMyAddresses(Collection<Address> myAddresses) {
+	public void setMyAddresses(List<Address> myAddresses) {
 		this.myAddresses = myAddresses;
 	}
 
-	public Collection<WishList> getMyWishLists() {
+	public List<WishList> getMyWishLists() {
 		return myWishLists;
 	}
 
-	public void setMyWishLists(Collection<WishList> myWishLists) {
+	public void setMyWishLists(List<WishList> myWishLists) {
 		this.myWishLists = myWishLists;
 	}
 
-	public Collection<Review> getMyReviews() {
+	public List<Review> getMyReviews() {
 		return myReviews;
 	}
 
-	public void setMyReviews(Collection<Review> myReviews) {
+	public void setMyReviews(List<Review> myReviews) {
 		this.myReviews = myReviews;
 	}
 

@@ -1,13 +1,14 @@
 package com.app.pojo;
 
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.MapKeyColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -23,12 +24,13 @@ public class Kart {
 	private User user;
 
 	@OneToMany(mappedBy="kart")
+	@MapKeyColumn(name="id")
 //	@JoinTable(name="SK_Kart_Items", 
 //	joinColumns=@JoinColumn(name="Kart_Id"),
 //	inverseJoinColumns={
 //			@JoinColumn(name="Item_Id",referencedColumnName="id",unique=false)
 //	},	uniqueConstraints={@UniqueConstraint(columnNames={"Kart_Id","Item_Id"})})
-	private Collection<KartItem> itemsInKart = new ArrayList<>();
+	private Map<Integer,KartItem> kartItems = new HashMap<>();
 
 	public int getId() {
 		return id;
@@ -46,12 +48,13 @@ public class Kart {
 		this.user = user;
 	}
 
-	public Collection<KartItem> getItemsInKart() {
-		return itemsInKart;
+	public Map<Integer, KartItem> getKartItems() {
+		return kartItems;
 	}
 
-	public void setItemsInKart(Collection<KartItem> itemsInKart) {
-		this.itemsInKart = itemsInKart;
+	public void setKartItems(Map<Integer, KartItem> kartItems) {
+		this.kartItems = kartItems;
 	}
 
+	
 }

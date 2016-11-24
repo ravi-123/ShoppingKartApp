@@ -2,6 +2,7 @@ package com.app.pojo;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -31,7 +32,7 @@ public class WishList {
 	joinColumns=@JoinColumn(name="WishList_Id"),
 	inverseJoinColumns=@JoinColumn(name="Item_Id",unique=false),
 	uniqueConstraints={@UniqueConstraint(columnNames={"WishList_Id","Item_Id"})})
-	private Collection<Item> items = new ArrayList<>();
+	private List<Item> items = new ArrayList<>();
 
 	public int getId() {
 		return id;
@@ -61,7 +62,7 @@ public class WishList {
 		return items;
 	}
 
-	public void setItems(Collection<Item> items) {
+	public void setItems(List<Item> items) {
 		this.items = items;
 	}
 

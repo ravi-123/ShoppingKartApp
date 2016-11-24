@@ -1,8 +1,8 @@
 package com.app.pojo;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapKeyColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -41,12 +42,13 @@ public class Order {
 	private Address deliveryAddress;
 
 	@OneToMany(mappedBy="order")
+	@MapKeyColumn(name="id")
 //	@JoinTable(name="SK_Ordered_Items", 
 //	joinColumns=@JoinColumn(name="Order_Id"),
 //	inverseJoinColumns={
 //			@JoinColumn(name="Item_Id",referencedColumnName="id",unique=false)
 //	},	uniqueConstraints={@UniqueConstraint(columnNames={"Order_Id","Item_Id"})})
-	private Collection<OrderItem> orderedItems = new ArrayList<>();
+	private Map<Integer,OrderItem> orderedItems = new HashMap<>();
 
 	public int getId() {
 		return id;
@@ -112,12 +114,14 @@ public class Order {
 		this.deliveryAddress = deliveryAddress;
 	}
 
-	public Collection<OrderItem> getOrderedItems() {
+	public Map<Integer, OrderItem> getOrderedItems() {
 		return orderedItems;
 	}
 
-	public void setOrderedItems(Collection<OrderItem> orderedItems) {
+	public void setOrderedItems(Map<Integer, OrderItem> orderedItems) {
 		this.orderedItems = orderedItems;
 	}
+
+	
 
 }
