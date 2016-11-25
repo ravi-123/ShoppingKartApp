@@ -12,7 +12,7 @@ public class HibernateDaoImpl implements HibernateDao{
 	private SessionFactory sessionFactory;
 
 	public Session getSession() {
-		return this.getSessionFactory().openSession();
+		return this.getSessionFactory().getCurrentSession();
 	}
 
 	public SessionFactory getSessionFactory() {

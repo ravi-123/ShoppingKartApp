@@ -12,6 +12,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -23,10 +25,18 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.Email;
 
 import com.app.enums.Gender;
-import com.app.enums.Role;
+import com.app.pojo.Role;
 
 @Entity
 @Table(name = "SK_User",uniqueConstraints={@UniqueConstraint(columnNames={"email"}),@UniqueConstraint(columnNames={"contactNo"})})
+@NamedQueries(  
+	    {  
+	        @NamedQuery(  
+	        name = "getUserFromEmailAndContact",  
+	        query = "from User u where u.email= :email and u.contactNo = :contactNo"  
+	        )  
+	    }  
+	)  
 public class User {
 	@Id	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;

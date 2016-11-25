@@ -4,21 +4,18 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.app.enums.AddressPreferenceType;
 import com.app.enums.Gender;
-import com.app.enums.Role;
-import com.app.pojo.Address;
+import com.app.pojo.Role;
 import com.app.pojo.User;
 import com.app.services.UserService;
 
@@ -32,7 +29,7 @@ public class HomeController {
 	}
 
 	// req handling method
-	@RequestMapping("/home5")
+	@RequestMapping(value="/home5",method=RequestMethod.GET)
 	public ModelAndView sayHello() {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		User u1 = new User();
@@ -47,7 +44,7 @@ public class HomeController {
 		}
 		u1.setEmail("abc@gmail.com");
 		u1.setName("ravi");
-		u1.setRole(Role.USER);
+//		u1.setRole(Role.USER);
 		u1.setSex(Gender.MALE);		
 		userService.addUser(u1);
 		System.out.println(u1);

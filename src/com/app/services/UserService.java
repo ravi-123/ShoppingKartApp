@@ -21,4 +21,8 @@ public class UserService {
 		dao.addUser(userToAdd);
 		return true;
 	}
+	public boolean userExists(User u){
+		
+		return true;
+	}
 }

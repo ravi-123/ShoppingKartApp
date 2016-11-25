@@ -4,6 +4,7 @@ import javax.annotation.Resource;
 
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.app.pojo.User;
 
@@ -18,13 +19,22 @@ public class UserDaoImpl {
 		sess.close();
 		return u;
 	}
-	
+	@Transactional
 	public Boolean addUser(User userToAdd){
 		Session sess = dao.getSession();
-		sess.beginTransaction();
-		sess.save(userToAdd);
-		sess.getTransaction().commit();
-		sess.close();
+//		sess.beginTransaction();
+		try {
+			sess.saveOrUpdate(userToAdd);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("in catch block");
+			e.printStackTrace();
+		}
+//		sess.getTransaction().commit();
+//		sess.close();
 		return true;
 	}
+	
+	
+	
 }
