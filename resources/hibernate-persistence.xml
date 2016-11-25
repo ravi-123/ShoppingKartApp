@@ -21,7 +21,7 @@
 		<property name="packagesToScan" value="com.app.pojo"/>
 		<property name="hibernateProperties">
 		  <value> 
-			hibernate.dialect=${jdbc.db_dialect}ibernate
+			hibernate.dialect=${jdbc.db_dialect}
 			hibernate.format_sql=true
 			hibernate.show_sql=true
 			hibernate.hbm2ddl.auto=update
